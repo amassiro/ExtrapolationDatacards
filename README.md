@@ -23,6 +23,10 @@ Extrapolate datacards to higher luminosity and scaling sample composition (chang
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0040  -i scale8to13TeV.py  -s 4.0
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0050  -i scale8to13TeV.py  -s 5.0
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0100  -i scale8to13TeV.py  -s 10.0
+    python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0200  -i scale8to13TeV.py  -s 20.0
+    python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0300  -i scale8to13TeV.py  -s 30.0
+    python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0400  -i scale8to13TeV.py  -s 40.0
+    python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0500  -i scale8to13TeV.py  -s 50.0
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x1000  -i scale8to13TeV.py  -s 100.0
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x3000  -i scale8to13TeV.py  -s 300.0
 
@@ -58,6 +62,10 @@ run limit
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0040
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0050
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0100
+    perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0200
+    perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0300
+    perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0400
+    perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0500
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x1000
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x3000
 

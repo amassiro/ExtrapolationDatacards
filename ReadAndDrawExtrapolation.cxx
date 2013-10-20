@@ -1,16 +1,17 @@
 {
  
- std::string name = "asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Cut2012";
+//  std::string name = "asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Cut2012";
+ std::string name = "asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012";
  
 //  Double_t file_vals  [80] =    {     0,    0.5,         1,      2,      5,     10,   100,    300 };
 //  char* file_vals_name[80] =    {"0000", "0005", "0010", "0020", "0050", "0100", "1000", "3000"};
 //  int n_points = 7;
 
- Double_t file_vals  [80] =    {    0.1,    0.2,    0.3,    0.4,    0.5,    0.6,    0.7,    0.8,    0.9,          1,      2,      3,      4,      5,     10,   100,    300 };
- char* file_vals_name[80] =    { "0001", "0002", "0003", "0004", "0005", "0006", "0007", "0008", "0009",     "0010", "0020", "0030", "0040", "0050", "0100", "1000", "3000"};
- int n_points = 15;
- 
- 
+ Double_t file_vals  [80] =    {    0.1,    0.2,    0.3,    0.4,    0.5,    0.6,    0.7,    0.8,    0.9,          1,      2,      3,      4,      5,     10,     20,     30,     40,     50,   100,    300 };
+ char* file_vals_name[80] =    { "0001", "0002", "0003", "0004", "0005", "0006", "0007", "0008", "0009",     "0010", "0020", "0030", "0040", "0050", "0100", "0200", "0300", "0400", "0500", "1000", "3000"};
+ int n_points = 20;
+
+
  Double_t b_vals_exclusion[80];
  Double_t b_down_bars1_exclusion[80];
  Double_t b_up_bars1_exclusion[80];
