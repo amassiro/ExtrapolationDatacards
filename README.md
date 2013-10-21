@@ -7,6 +7,8 @@ Extrapolate datacards to higher luminosity and scaling sample composition (chang
     python ModifyDatacard.py -f datacards -i scale8to13TeV.py  -s 2.5
 
     cp -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 ./
+    ls qqHWWlnln-WHSC2012-2012-26Jun-Shape2012/ | grep -v 125 | awk '{print "rm qqHWWlnln-WHSC2012-2012-26Jun-Shape2012/"$1}'
+    rm -r qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*
     cp -r qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0000
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0001  -i scale8to13TeV.py  -s 0.1
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0002  -i scale8to13TeV.py  -s 0.2
@@ -29,10 +31,12 @@ Extrapolate datacards to higher luminosity and scaling sample composition (chang
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0500  -i scale8to13TeV.py  -s 50.0
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x1000  -i scale8to13TeV.py  -s 100.0
     python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x3000  -i scale8to13TeV.py  -s 300.0
+    python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-26Jun-Shape2012 -o qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x9000  -i scale8to13TeV.py  -s 900.0
 
 
 and copy to test
 
+    rm -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*
     cp -r  qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*      /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/
 
     cp -r  qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0000   /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0000
@@ -68,6 +72,7 @@ run limit
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0500
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x1000
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x3000
+    perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x9000
 
 
     perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0000
@@ -92,6 +97,7 @@ run limit
     perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0500
     perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x1000
     perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x3000
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x9000
 
 
 and analyze
@@ -109,3 +115,8 @@ or even better
 
     cp /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/asymptoti*hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*.out ./
     root -l ReadAndDrawExtrapolation.cxx
+
+
+
+
+
