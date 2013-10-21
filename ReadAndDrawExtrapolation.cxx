@@ -1,7 +1,10 @@
 {
  
 //  std::string name = "asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Cut2012";
- std::string name = "asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012";
+//  std::string name = "asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012";
+ std::string name = "asymptotic.signalInjected.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012";
+ 
+ 
  
 //  Double_t file_vals  [80] =    {     0,    0.5,         1,      2,      5,     10,   100,    300 };
 //  char* file_vals_name[80] =    {"0000", "0005", "0010", "0020", "0050", "0100", "1000", "3000"};
@@ -17,7 +20,8 @@
  Double_t b_up_bars1_exclusion[80];
  Double_t b_down_bars2_exclusion[80];
  Double_t b_up_bars2_exclusion[80];
- 
+
+ Double_t R_DATA_vals[80];
  
  
  std::string buffer;
@@ -31,7 +35,19 @@
    getline(file,buffer);
    getline(file,buffer);
    getline(file,buffer);
-   
+
+   if (buffer != ""){ ///---> save from empty line at the end!
+    std::stringstream line( buffer ); 
+    std::string temp;
+    // skip first 4 words
+    line >> temp;
+    line >> temp;
+    line >> temp;
+    line >> temp;
+    line >> R_DATA_vals[iter]; 
+  }
+  
+  
    getline(file,buffer);
    if (buffer != ""){ ///---> save from empty line at the end!
     std::stringstream line( buffer ); 
@@ -115,6 +131,14 @@
  }
  
  
+ 
+ TGraph* m_exclusion_DATA_line_graph = new TGraph(n_points, x_vals, R_DATA_vals);
+ m_exclusion_DATA_line_graph->SetLineWidth(2);
+ m_exclusion_DATA_line_graph->SetLineStyle(1);
+ m_exclusion_DATA_line_graph->SetMarkerSize(1);
+ m_exclusion_DATA_line_graph->SetFillColor(kWhite);
+ 
+ 
  // bkg hypothesis line
  TGraph* m_exclusion_b_line_graph = new TGraph(n_points, x_vals, b_vals_exclusion);
  m_exclusion_b_line_graph->SetMarkerSize(0);
@@ -138,13 +162,26 @@
  m_exclusion_b_band_graph_2sigma->SetMarkerColor(kYellow);
  m_exclusion_b_band_graph_2sigma->GetYaxis()->SetTitle("95% CL limit on #sigma / #sigma_{SM}");
  m_exclusion_b_band_graph_2sigma->GetXaxis()->SetTitle("Luminosity (fb^{-1})");
+
+ // legend
+ TLegend* m_exclusion_legend = new TLegend(0.27,0.74,0.50,0.94);
+ m_exclusion_legend->SetName("R Exclusion");
+ m_exclusion_legend->SetLineColor(kWhite);
+ m_exclusion_legend->SetFillColor(0);
+ m_exclusion_legend->AddEntry(m_exclusion_b_line_graph,"median expected");
+ m_exclusion_legend->AddEntry(m_exclusion_b_band_graph_1sigma,"expected #pm 1#sigma");
+ m_exclusion_legend->AddEntry(m_exclusion_b_band_graph_2sigma,"expected #pm 2#sigma");
+ m_exclusion_legend->AddEntry( m_exclusion_DATA_line_graph,"observed");
  
- 
+ // canvas and draw
  TCanvas* cc = new TCanvas ("cc","cc",800,600);
  m_exclusion_b_band_graph_2sigma->Draw("A30");
  m_exclusion_b_band_graph_2sigma->SetTitle("");
  m_exclusion_b_band_graph_1sigma->Draw("30");
  m_exclusion_b_line_graph->Draw("LP");
+ m_exclusion_DATA_line_graph->Draw("PL");
+
+ m_exclusion_legend->Draw();
  cc->SetGrid();
  
  

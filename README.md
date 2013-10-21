@@ -69,9 +69,34 @@ run limit
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x1000
     perl submitLocal_CutBased.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x3000
 
+
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0000
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0001
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0002
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0003
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0004
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0005
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0006
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0007
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0008
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0009
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0010
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0020
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0030
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0040
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0050
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0100
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0200
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0300
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0400
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x0500
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x1000
+    perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x3000
+
+
 and analyze
 
-    cp /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*.out ./
+    cp /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/asymptoti*hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*.out ./
 
     cat asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*.out  | grep 50.0% | awk '{print $5}' &> resultsMedian.txt
     cat asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*.out  | grep 2.5%  | awk '{print $5}' &> resultsM2.txt
@@ -82,5 +107,5 @@ and analyze
 
 or even better
 
-    cp /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/asymptotic.hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*.out ./
+    cp /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/asymptoti*hww-19.125.qqHWWlnln-WHSC2012-2012-26Jun-Shape2012-x*.out ./
     root -l ReadAndDrawExtrapolation.cxx
