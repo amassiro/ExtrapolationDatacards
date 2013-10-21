@@ -185,17 +185,8 @@ def ScaleDatacard (datacardname,xsecScale,scale) :
     f.write ("\n")
 
     # observation
-    #for it in range (len (observation)) :
-      #f.write (observation[it] + '\n')
-    observationRate = [elem for elem in observation if len (elem.split ()) > 0]
-    totalObserved = 0.
-    for it in range (len (newSampleRate)) :
-      totalObserved += newSampleRate[it]
-    f.write ("observation ")
-    f.write (str(totalObserved))
-    f.write ('\n')
-
-
+    for it in range (len (observation)) :
+      f.write (observation[it] + '\n')
 
     f.write ("---------------------------------------------------   \n")
     # long list of bin
