@@ -11,7 +11,8 @@ scaleFactor.update({'DYee' :  1.88476/1.14951})
 scaleFactor.update({'DYmm' :  1.88476/1.14951})
 scaleFactor.update({'DYTT' :  1.88476/1.14951})
 
-scaleFactor.update({'WJet' :  1.94063/1.15786})
+scaleFactor.update({'WJet' :  1.94063/1.15786*0.7})  # 0.7 is scale factor for 2012 ?
+#scaleFactor.update({'WJet' :  1.94063/1.15786})
 
 scaleFactor.update({'WW'   :  2.37867/1.21510})
 scaleFactor.update({'VV'   :  2.51853/1.23344})   #WZ
