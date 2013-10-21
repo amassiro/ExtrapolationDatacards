@@ -20,13 +20,15 @@ from operator import itemgetter
 
 import fnmatch
 
+import math
+
 ######################################
 
 
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
-def ScaleDatacard (datacardname,xsecScale,scale) :
+def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
 
     # open the datacard file
 
@@ -90,7 +92,9 @@ def ScaleDatacard (datacardname,xsecScale,scale) :
         systematics.append (line)
         systematicsName.append (line.split (' ')[0])
 
-    systematics = [elem for elem in systematics if len (elem.split ()) > 0]
+    # clean empty systematics
+    systematics     = [elem for elem in systematics     if len (elem.split ()) > 0]
+    systematicsName = [elem for elem in systematicsName if len (elem.split ()) > 0]
 
     #print "header          = ", header
     #print "binName         = ", binName
@@ -214,7 +218,42 @@ def ScaleDatacard (datacardname,xsecScale,scale) :
    # systematics
     f.write ("---------------------------------------------------   \n")
     for it in range (len (systematics)) :
-      f.write (systematics[it] + '\n')
+      sampleSyst = []
+      sampleSyst = systematics[it].split (' ')
+      sampleSyst = filter(lambda a: a != '', sampleSyst)
+
+      # reduce/increase statistical systematics
+      matchSysName = re.search("stat_bin1", systematicsName[it])
+
+      # scale all nuisances?
+      if scaleNuis and sampleSyst[1] == "lnN" :
+        matchfile = True
+      if not matchfile:
+        f.write (systematics[it] + '\n')
+      else :
+        globalScale = 1.
+        for sample in sampleName:
+          matchSample  = re.search("_"+str(sample)+"_", systematicsName[it])
+          if matchSample:
+            additionalScale = 1.
+          if sample in scaleFactor :
+            additionalScale = scaleFactor[ sample ]
+            globalScale = scale*additionalScale
+        for itColumn in range (len (sampleSyst)) :
+          if itColumn!=0 and itColumn!=1 : # first two are name and lnN
+            if sampleSyst[itColumn] == "-" :
+              f.write (sampleSyst[itColumn])
+              f.write ("   ")
+            else :
+              kvalue = float (sampleSyst[itColumn])
+              kvalue -= 1.
+              kvalue = kvalue / math.sqrt (globalScale)     # error scales as 1/sqrt(scale)
+              f.write (str(kvalue+1.))
+              f.write ("   ")
+          else :
+            f.write (sampleSyst[itColumn])
+            f.write ("   ")
+        f.write (' \n')
 
     f.close ()
 
@@ -235,6 +274,7 @@ if __name__ == '__main__':
     parser.add_option("-o", "--outputFolder", dest="folderNameOutput",   help="folder name output", metavar="NEWDATACARDS")
     parser.add_option("-i", "--input",        dest="xsecScale",          help="cross section scaling file (e.g. from 8 to 13 TeV)",     default='blabla.py')
     parser.add_option("-s", "--scale",        dest="scale",              help="scaling factor in luminosity", default="1.0")
+    parser.add_option("-a", "--scaleNuis",    dest="scaleNuis",          help="scale according to luminosity all normalization nuisances?", default=False)
 
     (options, args) = parser.parse_args()
 
@@ -256,7 +296,7 @@ if __name__ == '__main__':
 
     # for each datacard perform the nuisances scan
     for datacard in listOfDatacards :
-        ScaleDatacard (datacard,options.xsecScale,float(options.scale))
+        ScaleDatacard (datacard,options.xsecScale,float(options.scale),bool(options.scaleNuis))
 
 
 
