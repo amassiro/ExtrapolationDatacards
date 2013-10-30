@@ -226,6 +226,7 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
       matchSysName = re.search("stat_bin1", systematicsName[it])
 
       # scale all nuisances?
+      matchfile = False
       if scaleNuis and sampleSyst[1] == "lnN" :
         matchfile = True
       if not matchfile:
