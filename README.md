@@ -165,6 +165,7 @@ and analyze
 or even better
 
     cp /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/asymptoti*hww-19.125.qqHWWlnln-WHSC2012-2012-30Oct-Shape2012-x*.out ./
+    cp /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/asymptoti*hww-19.125.qqHWWlnln-WHSC2012-2012-23Oct-Shape2012-x*.out ./
     root -l ReadAndDrawExtrapolation.cxx
 
 
