@@ -32,28 +32,28 @@ python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC
 
 rm -r qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x*
 cp -r qqHWWlnln-WHSC-All-03Nov-Shape2012 qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0000
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0001  -i scale8to13TeV.py  -s 0.1
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0002  -i scale8to13TeV.py  -s 0.2
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0003  -i scale8to13TeV.py  -s 0.3
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0004  -i scale8to13TeV.py  -s 0.4
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0005  -i scale8to13TeV.py  -s 0.5
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0006  -i scale8to13TeV.py  -s 0.6
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0007  -i scale8to13TeV.py  -s 0.7
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0008  -i scale8to13TeV.py  -s 0.8
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0009  -i scale8to13TeV.py  -s 0.9
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0010  -i scale8to13TeV.py  -s 1.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0020  -i scale8to13TeV.py  -s 2.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0030  -i scale8to13TeV.py  -s 3.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0040  -i scale8to13TeV.py  -s 4.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0050  -i scale8to13TeV.py  -s 5.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0100  -i scale8to13TeV.py  -s 10.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0200  -i scale8to13TeV.py  -s 20.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0300  -i scale8to13TeV.py  -s 30.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0400  -i scale8to13TeV.py  -s 40.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0500  -i scale8to13TeV.py  -s 50.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x1000  -i scale8to13TeV.py  -s 100.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x3000  -i scale8to13TeV.py  -s 300.0
-python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x9000  -i scale8to13TeV.py  -s 900.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0001  -i scale8to13TeV.py  -s 0.1
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0002  -i scale8to13TeV.py  -s 0.2
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0003  -i scale8to13TeV.py  -s 0.3
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0004  -i scale8to13TeV.py  -s 0.4
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0005  -i scale8to13TeV.py  -s 0.5
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0006  -i scale8to13TeV.py  -s 0.6
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0007  -i scale8to13TeV.py  -s 0.7
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0008  -i scale8to13TeV.py  -s 0.8
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0009  -i scale8to13TeV.py  -s 0.9
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0010  -i scale8to13TeV.py  -s 1.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0020  -i scale8to13TeV.py  -s 2.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0030  -i scale8to13TeV.py  -s 3.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0040  -i scale8to13TeV.py  -s 4.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0050  -i scale8to13TeV.py  -s 5.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0100  -i scale8to13TeV.py  -s 10.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0200  -i scale8to13TeV.py  -s 20.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0300  -i scale8to13TeV.py  -s 30.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0400  -i scale8to13TeV.py  -s 40.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x0500  -i scale8to13TeV.py  -s 50.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x1000  -i scale8to13TeV.py  -s 100.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x3000  -i scale8to13TeV.py  -s 300.0
+python ModifyDatacard.py -f qqHWWlnln-WHSC-All-03Nov-Shape2012 -o qqHWWlnln-WHSC-All-03Nov-Shape2012-NoScaling-x9000  -i scale8to13TeV.py  -s 900.0
 
 
 
