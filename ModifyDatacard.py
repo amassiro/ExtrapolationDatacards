@@ -47,6 +47,7 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
     binName = []
     longListBin = []   # the bin list just before systematics
     sampleName = []
+    reducedsampleName = [] # remove duplicate!
     sampleRate = []
     observation = []
     systematics = []
@@ -112,8 +113,6 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
 
     print "scaleFactor     = ", scaleFactor
 
-
-
     # modify sample rate with scale and scaleFactor (sample dependent)
     newSampleRate = []
     numSample = 0
@@ -124,6 +123,12 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
       numSample+=1
       newSampleRate.append(scale*additionalScale*float(rate))
 
+
+    # remove duplicates in "sampleName"
+    # used in scaling histograms in case of "matching"
+    # and in case the same sample name is used in several "bin"
+    # NB: the order is not preserved, but who cares!
+    reducedsampleName = list(set(sampleName))
 
     # modify sample rate in root file!
 
@@ -152,7 +157,7 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
 
 
       for histoName, histogram in histograms.iteritems():
-        for sample in sampleName:
+        for sample in reducedsampleName:
           #print "histoName = ",histoName
           match  = re.search("histo_"+str(sample)+"_", histoName)
           match2 = bool("histo_"+str(sample) == histoName)
@@ -161,6 +166,8 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
             if sample in scaleFactor :
               additionalScale = scaleFactor[ sample ]
             globalScale = scale*additionalScale
+            #if (sample == "Vg") :
+              #print "iFile = ", rootFileBin, "  :: histoName = ",histoName, " --> ", "histo_",str(sample) , " --> ",match2, " or ", match , " globalScale = ", globalScale
             histogram.Sumw2()
             histogram.Scale(globalScale)
             #print "globalScale = ",globalScale
