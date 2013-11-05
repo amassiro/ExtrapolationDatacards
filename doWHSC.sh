@@ -30,6 +30,7 @@ python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-30Oct-Shape2012 -o qqHWWlnln
 
 # without systematics scaling
 
+rm -r qqHWWlnln-WHSC2012-2012-23Oct-Shape2012-x*
 cp -r qqHWWlnln-WHSC2012-2012-23Oct-Shape2012 qqHWWlnln-WHSC2012-2012-23Oct-Shape2012-x0000
 python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-23Oct-Shape2012 -o qqHWWlnln-WHSC2012-2012-23Oct-Shape2012-x0001  -i scale8to13TeV.py  -s 0.1
 python ModifyDatacard.py -f qqHWWlnln-WHSC2012-2012-23Oct-Shape2012 -o qqHWWlnln-WHSC2012-2012-23Oct-Shape2012-x0002  -i scale8to13TeV.py  -s 0.2
@@ -69,7 +70,8 @@ cp -r  qqHWWlnln-WHSC2012-2012-23Oct-Shape2012-x*      /afs/cern.ch/user/a/amass
 # run limit
 
 cd /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/
-cmsenv
+eval `scramv1 runtime -sh`
+
 
 
 perl submitLocal_CutBased_SignalMassDependentInjection.pl qqHWWlnln-WHSC2012-2012-30Oct-Shape2012-x0000

@@ -6,6 +6,9 @@ Extrapolate datacards to higher luminosity and scaling sample composition (chang
 
     python ModifyDatacard.py -f datacards -i scale8to13TeV.py  -s 2.5
 
+    cp -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012 ./
+    ls qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012/ | grep -v 125 | awk '{print "rm qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012/"$1}'
+
     cp -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-WHSC2012-2012-30Oct-Shape2012 ./
     ls qqHWWlnln-WHSC2012-2012-30Oct-Shape2012/ | grep -v 125 | awk '{print "rm qqHWWlnln-WHSC2012-2012-30Oct-Shape2012/"$1}'
 
@@ -63,6 +66,10 @@ or even better
 
 
 
+
+all coded into a script:
+
+   ./doWHSC.sh
 
 
 
