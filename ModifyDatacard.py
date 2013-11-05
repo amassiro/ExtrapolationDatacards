@@ -232,6 +232,32 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
       # reduce/increase statistical systematics
       matchSysName = re.search("stat_bin1", systematicsName[it])
 
+      # correct gmN nuisances
+     if sampleSyst[1] == "gmN" :
+       globalScale = 1.
+       found = False
+       numSample = 0
+       for systStep in sampleSyst:
+         if numSample != 0 and sampleSyst[1] != "-" and not found:
+           additionalScale = 1.
+           if sampleName[numSample] in scaleFactor :
+             additionalScale = scaleFactor[ sampleName[numSample] ]
+           globalScale = additionalScale*float(rate)
+           found = True
+           numSample+=1
+         else :
+           numSample+=1
+
+       for itColumn in range (len (sampleSyst)) :
+         if itColumn==2 : # te third column is the number of events in control region -> to be scaled!
+           f.write (str(globalScale*sampleSyst[itColumn]))
+           f.write ("   ")
+         else :
+           f.write (sampleSyst[itColumn])
+           f.write ("   ")
+       f.write (' \n')
+
+      # now all other nuisances
       # scale all nuisances?
       matchfile = False
       if scaleNuis and sampleSyst[1] == "lnN" :
