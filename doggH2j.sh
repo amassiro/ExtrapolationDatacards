@@ -33,7 +33,7 @@ python ModifyDatacard.py -f qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012 -o qqHWWlnl
 # without systematics scaling
 
 rm -r qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012-x*
-cp -r qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012 qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012-x0000
+cp -r qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012 qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012-x0000
 python ModifyDatacard.py -f qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012 -o qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012-x0001  -i scale8to13TeV.py  -s 0.1
 python ModifyDatacard.py -f qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012 -o qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012-x0002  -i scale8to13TeV.py  -s 0.2
 python ModifyDatacard.py -f qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012 -o qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012-x0003  -i scale8to13TeV.py  -s 0.3
@@ -134,8 +134,8 @@ cp /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/asymptoti*hww
 
 
 echo "now do:"
-echo "root -l ReadAndDrawExtrapolation.cxx\(asymptotic.signalInjected.hww-19.125.qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012\)"
-echo "root -l ReadAndDrawExtrapolation.cxx\(asymptotic.signalInjected.hww-19.125.qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012\)"
+echo "root -l ReadAndDrawExtrapolation.cxx\(\"asymptotic.signalInjected.hww-19.125.qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012\"\)"
+echo "root -l ReadAndDrawExtrapolation.cxx\(\"asymptotic.signalInjected.hww-19.125.qqHWWlnln-ggH2j2012-2012-31Oct-Shape2012\"\)"
 
 
 
