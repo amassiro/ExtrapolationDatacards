@@ -29,6 +29,16 @@ fix for multiple folder directories:
     mv qqHWWlnln-WHSC-All-03Nov-Shape2012/hww-19.36fb.mH125.txt.temp    qqHWWlnln-WHSC-All-03Nov-Shape2012/hww-19.36fb.mH125.txt
 
 
+
+
+ggH2j
+
+    cp -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012 ./
+    ls qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012/ | grep -v 125 | awk '{print "rm qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012/"$1}'
+    ls qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012/shapes/ | grep -v 125 | awk '{print "rm qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012/shapes/"$1}'
+
+
+
 other:
 
     cp -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012 ./

@@ -233,61 +233,71 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
       matchSysName = re.search("stat_bin1", systematicsName[it])
 
       # correct gmN nuisances
-     if sampleSyst[1] == "gmN" :
-       globalScale = 1.
-       found = False
-       numSample = 0
-       for systStep in sampleSyst:
-         if numSample != 0 and sampleSyst[1] != "-" and not found:
-           additionalScale = 1.
-           if sampleName[numSample] in scaleFactor :
-             additionalScale = scaleFactor[ sampleName[numSample] ]
-           globalScale = additionalScale*float(rate)
-           found = True
-           numSample+=1
-         else :
-           numSample+=1
-
-       for itColumn in range (len (sampleSyst)) :
-         if itColumn==2 : # te third column is the number of events in control region -> to be scaled!
-           f.write (str(globalScale*sampleSyst[itColumn]))
-           f.write ("   ")
-         else :
-           f.write (sampleSyst[itColumn])
-           f.write ("   ")
-       f.write (' \n')
-
-      # now all other nuisances
-      # scale all nuisances?
-      matchfile = False
-      if scaleNuis and sampleSyst[1] == "lnN" :
-        matchfile = True
-      if not matchfile:
-        f.write (systematics[it] + '\n')
-      else :
+      if (sampleSyst[1] == "gmN") :
         globalScale = 1.
-        for sample in sampleName:
-          matchSample  = re.search("_"+str(sample)+"_", systematicsName[it])
-          if matchSample:
+        found = False
+        numSample = 0
+        for systStep in sampleSyst:
+          if numSample != 0 and sampleSyst[1] != "-" and not found:
             additionalScale = 1.
-          if sample in scaleFactor :
-            additionalScale = scaleFactor[ sample ]
-            globalScale = scale*additionalScale
+            if sampleName[numSample] in scaleFactor :
+              additionalScale = scaleFactor[ sampleName[numSample] ]
+            globalScale = additionalScale*float(scale)
+            found = True
+            numSample+=1
+          else :
+            numSample+=1
+
+        oldNsideband = 1.
+        newNsideband = 1.
         for itColumn in range (len (sampleSyst)) :
-          if itColumn!=0 and itColumn!=1 : # first two are name and lnN
-            if sampleSyst[itColumn] == "-" :
+          if itColumn==2 : # te third column is the number of events in control region -> to be scaled!
+            f.write (str(int(globalScale*int(sampleSyst[itColumn]))))
+            f.write ("   ")
+            oldNsideband = int(sampleSyst[itColumn])
+            newNsideband = int(globalScale*int(sampleSyst[itColumn]))
+          else :
+            if sampleSyst[itColumn] == "-" or itColumn<=1:
               f.write (sampleSyst[itColumn])
               f.write ("   ")
             else :
-              kvalue = float (sampleSyst[itColumn])
-              kvalue -= 1.
-              kvalue = kvalue / math.sqrt (globalScale)     # error scales as 1/sqrt(scale)
-              f.write (str(kvalue+1.))
+              f.write (str( float(sampleSyst[itColumn]) *  oldNsideband * globalScale / newNsideband ))
               f.write ("   ")
-          else :
-            f.write (sampleSyst[itColumn])
-            f.write ("   ")
+
         f.write (' \n')
+
+      else :
+        # now all other nuisances
+        # scale all nuisances?
+        matchfile = False
+        if scaleNuis and sampleSyst[1] == "lnN" :
+          matchfile = True
+        if not matchfile
+          f.write (systematics[it] + '\n')
+        else :
+          globalScale = 1.
+          for sample in sampleName:
+            matchSample  = re.search("_"+str(sample)+"_", systematicsName[it])
+            if matchSample:
+              additionalScale = 1.
+            if sample in scaleFactor :
+              additionalScale = scaleFactor[ sample ]
+              globalScale = scale*additionalScale
+          for itColumn in range (len (sampleSyst)) :
+              if itColumn!=0 and itColumn!=1 : # first two are name and lnN
+              if sampleSyst[itColumn] == "-" :
+                f.write (sampleSyst[itColumn])
+                f.write ("   ")
+              else :
+                kvalue = float (sampleSyst[itColumn])
+                kvalue -= 1.
+                kvalue = kvalue / math.sqrt (globalScale)     # error scales as 1/sqrt(scale)
+                f.write (str(kvalue+1.))
+                f.write ("   ")
+            else :
+              f.write (sampleSyst[itColumn])
+              f.write ("   ")
+          f.write (' \n')
 
     f.close ()
 
