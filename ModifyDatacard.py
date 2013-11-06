@@ -235,18 +235,14 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
       # correct gmN nuisances
       if (sampleSyst[1] == "gmN") :
         globalScale = 1.
-        found = False
-        numSample = 0
-        for systStep in sampleSyst:
-          if numSample != 0 and sampleSyst[1] != "-" and not found:
-            additionalScale = 1.
-            if sampleName[numSample] in scaleFactor :
-              additionalScale = scaleFactor[ sampleName[numSample] ]
-            globalScale = additionalScale*float(scale)
-            found = True
-            numSample+=1
-          else :
-            numSample+=1
+        for itColumn in range (len (sampleSyst)) :
+          if itColumn>2 :   # blabla gmN N - -  0.3 - - 
+            if sampleSyst[itColumn] != "-" :
+              additionalScale = 1.
+              if sampleName[itColumn-3] in scaleFactor :
+                additionalScale = scaleFactor[ sampleName[itColumn-3] ]
+              globalScale = additionalScale*float(scale)
+              #print "globalScale = ", globalScale, " = ", additionalScale, " * ", float(scale), " sampleName[", itColumn-3 ,  "] ] = ", sampleName[itColumn-3], " sampleSyst[", itColumn, "] = ", sampleSyst[itColumn]
 
         oldNsideband = 1.
         newNsideband = 1.
@@ -261,6 +257,7 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
               f.write (sampleSyst[itColumn])
               f.write ("   ")
             else :
+              print "final globalScale = ", globalScale
               f.write (str( float(sampleSyst[itColumn]) *  oldNsideband * globalScale / newNsideband ))
               f.write ("   ")
 
@@ -272,7 +269,7 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
         matchfile = False
         if scaleNuis and sampleSyst[1] == "lnN" :
           matchfile = True
-        if not matchfile
+        if not matchfile :
           f.write (systematics[it] + '\n')
         else :
           globalScale = 1.
@@ -285,18 +282,18 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
               globalScale = scale*additionalScale
           for itColumn in range (len (sampleSyst)) :
               if itColumn!=0 and itColumn!=1 : # first two are name and lnN
-              if sampleSyst[itColumn] == "-" :
+                if sampleSyst[itColumn] == "-" :
+                  f.write (sampleSyst[itColumn])
+                  f.write ("   ")
+                else :
+                  kvalue = float (sampleSyst[itColumn])
+                  kvalue -= 1.
+                  kvalue = kvalue / math.sqrt (globalScale)     # error scales as 1/sqrt(scale)
+                  f.write (str(kvalue+1.))
+                  f.write ("   ")
+              else :
                 f.write (sampleSyst[itColumn])
                 f.write ("   ")
-              else :
-                kvalue = float (sampleSyst[itColumn])
-                kvalue -= 1.
-                kvalue = kvalue / math.sqrt (globalScale)     # error scales as 1/sqrt(scale)
-                f.write (str(kvalue+1.))
-                f.write ("   ")
-            else :
-              f.write (sampleSyst[itColumn])
-              f.write ("   ")
           f.write (' \n')
 
     f.close ()
