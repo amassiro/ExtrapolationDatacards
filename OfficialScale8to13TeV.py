@@ -23,7 +23,12 @@ scaleFactor.update({'WW'   :  2.342})
 scaleFactor.update({'WWewk':  2.342})
 scaleFactor.update({'VV'   :  1.991})   #WZ
 
+scaleFactor.update({'WZ'   :  1.991})
+scaleFactor.update({'ZZ'   :  1.869})
+
 scaleFactor.update({'Top'  :  3.307})
+scaleFactor.update({'tW'   :  3.490})
+
 
 scaleFactor.update({'VVV'   : 2.500})
 
