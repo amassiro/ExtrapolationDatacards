@@ -59,23 +59,27 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
     for line in lines:
       if '---' in line : continue
       if systime == 0 :
-        if line.split (' ')[0] == 'bin' and firstTimeBin:
+        tempLine = line.split (' ') # fix for empty spaces!
+        tempLine = filter(lambda a: a != '', tempLine)
+        if len(tempLine) == 0 : continue #skip if empty
+
+        if tempLine[0] == 'bin' and firstTimeBin:
           binName = line.split (' ')
           binName = filter(lambda a: a != 'bin', binName)
           binName = filter(lambda a: a != '', binName)
           firstTimeBin = False
-        elif line.split (' ')[0] == 'bin':
+        elif tempLine[0] == 'bin':
          longListBin.append(line)
-        elif line.split (' ')[0] == 'observation' :
+        elif tempLine[0] == 'observation' :
           observation.append(line)
-        elif line.split (' ')[0] == 'process' and firstTimeProcess:
+        elif tempLine[0] == 'process' and firstTimeProcess:
           sampleName = line.split (' ')
           sampleName = filter(lambda a: a != 'process', sampleName)
           sampleName = filter(lambda a: a != '', sampleName)
           firstTimeProcess = False
-        elif line.split (' ')[0] == 'process':
+        elif tempLine[0] == 'process':
           longListRateIndex.append(line)
-        elif line.split (' ')[0] == 'rate' :
+        elif tempLine[0] == 'rate' :
           systime = 1
           sampleRate = line.split (' ')
           sampleRate = filter(lambda a: a != 'rate', sampleRate)
@@ -84,7 +88,7 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
           header.append (line)
           #   0   1                   2                                    3
           #shapes *               hwwof_1j_shape_7TeV            hwwof_1j.input_7TeV.root              histo_$PROCESS histo_$PROCESS_$SYSTEMATIC
-          if line.split (' ')[0] == 'shapes' :
+          if tempLine[0] == 'shapes' :
             tempRootList = line.split (' ')
             tempRootList = filter(lambda a: a != '', tempRootList)
             if tempRootList[1] == '*' :
@@ -112,6 +116,7 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
       handle.close()
 
     print "scaleFactor     = ", scaleFactor
+    print "lumi scale      = ", scale
 
     # modify sample rate with scale and scaleFactor (sample dependent)
     newSampleRate = []

@@ -10,6 +10,18 @@ Extrapolate datacards to higher luminosity and scaling sample composition (chang
 working in
 
     /afs/cern.ch/user/a/amassiro/Limit/ExtrapolationDatacards
+    /home/amassiro/Datacards/ExtrapolationDatacards
+
+
+Official datacards rescaling:
+
+   ./doVBF.sh
+   ./doVH.sh
+
+
+
+
+
 
 WHSC
 
