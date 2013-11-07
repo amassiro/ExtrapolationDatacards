@@ -17,7 +17,7 @@ Official datacards rescaling:
 
    ./doVBF.sh
    ./doVH.sh
-
+   ./doAllDatacards.sh
 
 
 
