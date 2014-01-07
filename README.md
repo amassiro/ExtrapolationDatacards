@@ -40,6 +40,11 @@ ggH2j
     ls qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012/shapes/ | grep -v 125 | awk '{print "rm qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012/shapes/"$1}'
 
 
+WWewk
+
+    cp -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-WW2jewk-All-01Jan-Shape2012 ./
+
+
 other:
 
     cp -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-ggH2j2012-2012-30Oct-Shape2012 ./
