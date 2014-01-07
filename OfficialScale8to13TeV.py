@@ -45,3 +45,17 @@ scaleFactor.update({'VgS'  : 1.991})
 scaleFactor.update({'Wg3l' : 1.991})
 
 
+
+
+scaleFactor.update({'DYee05' :  1.710}) # for WWewk
+scaleFactor.update({'DYmm05' :  1.710}) # for WWewk
+
+scaleFactor.update({'TopPt0'  :  3.307}) # for WWewk
+scaleFactor.update({'TopPt1'  :  3.307}) # for WWewk
+
+#
+# about DY>ll  :: use "worst" case scenario, biggest scale factor
+#         Z(10)->ee      1.68986  /  1.12177  = 1.51
+#         Z(20)->ee      1.88457  /  1.14953  = 1.68
+#         Z(50)->ee      1.99168  /  1.16503  = 1.71
+#

@@ -21,8 +21,6 @@ Official datacards rescaling:
 
 
 
-
-
 WHSC
 
     cp -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-WHSC-All-03Nov-Shape2012 ./
