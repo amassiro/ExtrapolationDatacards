@@ -12,6 +12,7 @@ working in
     /afs/cern.ch/user/a/amassiro/Limit/ExtrapolationDatacards
     /home/amassiro/Datacards/ExtrapolationDatacards
 
+    
 
 Official datacards rescaling:
 
@@ -20,6 +21,16 @@ Official datacards rescaling:
     ./doAllDatacards.sh
 
 
+ggH 13 TeV 
+
+    
+    cp -r /afs/cern.ch/user/a/amassiro/Framework/CMSSW_7_6_3/src/PlotsConfigurations/Configurations/ggH/datacards/    ggHEFCAInput/
+    
+    sh scripts/doGGHEFCA.sh
+
+    r99t ReadAndDrawExtrapolation.cxx\(\"result.data.MaxLikelihoodFit.Moriond2016.v1.txt.pruned\"\)
+
+    
 
 WHSC
 

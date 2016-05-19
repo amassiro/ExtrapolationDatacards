@@ -34,8 +34,10 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
 
     print 'Opening original input datacard: ', datacardname
     lines = open (datacardname, 'r').read().split ('\n')
-    nametag = datacardname.split ('/')[-1].replace ('.txt', '')
-    thepath = datacardname.replace (nametag + '.txt', '')
+    #nametag = datacardname.split ('/')[-1].replace ('.txt', '')
+    nametag = datacardname.split ('/')[-1]
+    #thepath = datacardname.replace (nametag + '.txt', '')
+    thepath = datacardname.replace (nametag, '')
 
     print "nametag = ",nametag
     print "thepath = ",thepath
@@ -187,7 +189,8 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
 
 
     # write new datacard
-    filename = str(thepath) + '/' + str(nametag) + '.txt'
+    #filename = str(thepath) + '/' + str(nametag) + '.txt'
+    filename = str(thepath) + '/' + str(nametag)
     f = open(filename, 'w')
 
     # header
@@ -309,6 +312,15 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
 
 
 if __name__ == '__main__':
+
+
+    print '                                                                                                                                       '
+    print '  ____|        |                              |         |              __ \          |                                 |                '
+    print '  __|  \ \  /  __|   __|  _` |  __ \    _ \   |   _` |  __|   _ \      |   |   _` |  __|   _` |   __|   _` |   __|  _` |   __|          '
+    print '  |     `  <   |    |    (   |  |   |  (   |  |  (   |  |     __/      |   |  (   |  |    (   |  (     (   |  |    (   | \__ \          '
+    print ' _____| _/\_\ \__| _|   \__,_|  .__/  \___/  _| \__,_| \__| \___|     ____/  \__,_| \__| \__,_| \___| \__,_| _|   \__,_| ____/          '
+    print '                               _|                                                                                                       '
+    print '                                                                                                                                        '
 
 
     #if len (sys.argv) < 2 : 
