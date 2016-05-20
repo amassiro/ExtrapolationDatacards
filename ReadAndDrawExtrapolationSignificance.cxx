@@ -81,9 +81,10 @@ void ReadAndDrawExtrapolationSignificance(std::string name = "asymptotic.signalI
 //  m_resolution_DATA_line_graph->Draw("A30");
  m_resolution_DATA_line_graph->Draw("APL");
  m_resolution_DATA_line_graph->GetYaxis()->SetRangeUser(0,7);
+ m_resolution_DATA_line_graph->SetTitle("");
  
  
- TLine *line1 = new TLine( x_vals[0], 5.0, x_vals[n_points], 5.0);
+ TLine *line1 = new TLine( x_vals[0], 5.0, x_vals[n_points-1], 5.0);
  line1->SetLineWidth(2);
  line1->SetLineStyle(2);
  line1->SetLineColor(kBlue);
