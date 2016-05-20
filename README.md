@@ -29,6 +29,7 @@ ggH 13 TeV
     sh scripts/doGGHEFCA.sh
 
     r99t ReadAndDrawExtrapolation.cxx\(\"result.data.MaxLikelihoodFit.Moriond2016.v1.txt.pruned\"\)
+    r99t ReadAndDrawExtrapolationSignificance.cxx\(\"result.data.Significance.Moriond2016.v1.txt.pruned\"\)
 
     
 

@@ -1,9 +1,9 @@
 void ReadAndDrawExtrapolation(std::string name = "asymptotic.signalInjected.hww-19.125.qqHWWlnln-WHSC2012-2012-30Oct-Shape2012"){
  
- Double_t file_vals  [80] =    {     1,      2,      5,     10,     50};
- char* file_vals_name[80] =    { "0001", "0002", "0005", "0010", "0050"};
- int n_points = 5;
-
+ Double_t file_vals  [80] =    {     1,      2,      3,     4,     5,     10,    20,    30,    50,    100,   200};
+ char* file_vals_name[80] =    { "0001", "0002", "0003","0004","0005", "0010","0020","0030","0050", "0100","0200"};
+ int n_points = 11;
+  
 
  Double_t b_vals_exclusion[80];
  Double_t b_down_bars1_exclusion[80];
@@ -26,37 +26,33 @@ void ReadAndDrawExtrapolation(std::string name = "asymptotic.signalInjected.hww-
   while(!file.eof()){
    // skip first 6 lines
    getline(file,buffer);
-   getline(file,buffer);
-   getline(file,buffer);
-   getline(file,buffer);
-   getline(file,buffer);
-   getline(file,buffer);
-   
    std::cout << " buffer = " << buffer << std::endl;
    
    if (buffer != ""){ ///---> save from empty line at the end!
-    std::stringstream line( buffer ); 
-    std::string temp;
-    // skip first 4 words    //  Best fit r: 1  -0.521743/+0.541867  (68% CL)
-    line >> temp;
-    line >> temp;
-    line >> temp;
-    line >> temp;
-    
-    line >> temp;
-    std::istringstream temp_combined(temp);
-    std::string temp_single;    
-    std::vector<std::string> strings;
-    while (getline(temp_combined, temp_single, '/')) {
-      std::cout << temp_single << std::endl;
-      strings.push_back(temp_single);
-    }
-    
-    R_DATA_vals_down[iter] = atof(strings.at(0).c_str()); 
-    R_DATA_vals_up[iter]   = atof(strings.at(1).c_str()); 
-    R_DATA_vals[iter] = 1; 
+
+     std::stringstream line( buffer ); 
+     std::string temp;
+     // skip first 4 words    //  Best fit r: 1  -0.521743/+0.541867  (68% CL)
+     line >> temp;
+     if (temp == "Best") {
+       line >> temp;
+       line >> temp;
+       line >> temp;
+       
+       line >> temp;
+       std::istringstream temp_combined(temp);
+       std::string temp_single;    
+       std::vector<std::string> strings;
+       while (getline(temp_combined, temp_single, '/')) {
+         std::cout << temp_single << std::endl;
+         strings.push_back(temp_single);
+       }
+       
+       R_DATA_vals_down[iter] = atof(strings.at(0).c_str()); 
+       R_DATA_vals_up[iter]   = atof(strings.at(1).c_str()); 
+       R_DATA_vals[iter] = 1; 
+     }
    }
-  
   }
  }
  
@@ -72,7 +68,10 @@ void ReadAndDrawExtrapolation(std::string name = "asymptotic.signalInjected.hww-
 
 
  for (int i = 0; i < n_points; i++){
+//    std::cout << " R_DATA_vals_down = " << R_DATA_vals_down[i] << " --> ";
+   if (fabs(R_DATA_vals_down[i]) > 2) R_DATA_vals_down[i] = -R_DATA_vals_up[i];
    R_DATA_vals_down[i] = fabs( R_DATA_vals[i]+R_DATA_vals_down[i]);
+//    std::cout << " R_DATA_vals_down = " << R_DATA_vals_down[i] << std::endl;
    R_DATA_vals_up[i]   = fabs( R_DATA_vals[i]+R_DATA_vals_up[i]);
  }
  
