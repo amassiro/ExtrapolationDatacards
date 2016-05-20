@@ -69,7 +69,7 @@ void ReadAndDrawExtrapolation(std::string name = "asymptotic.signalInjected.hww-
 
  for (int i = 0; i < n_points; i++){
 //    std::cout << " R_DATA_vals_down = " << R_DATA_vals_down[i] << " --> ";
-   if (fabs(R_DATA_vals_down[i]) > 2) R_DATA_vals_down[i] = -R_DATA_vals_up[i];
+//    if (fabs(R_DATA_vals_down[i]) > 2) R_DATA_vals_down[i] = -R_DATA_vals_up[i];
    R_DATA_vals_down[i] = fabs( R_DATA_vals[i]+R_DATA_vals_down[i]);
 //    std::cout << " R_DATA_vals_down = " << R_DATA_vals_down[i] << std::endl;
    R_DATA_vals_up[i]   = fabs( R_DATA_vals[i]+R_DATA_vals_up[i]);
