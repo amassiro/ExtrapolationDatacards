@@ -243,9 +243,17 @@ def ScaleDatacard (datacardname,xsecScale,scale,nuisancesScaling) :
         # check matching in name of nuisance
         matchSysName = re.search(nuisancesScalingName, systematicsName[it])
         if matchSysName != None :
-          whatKindOfScale = nuisancesScalingValues['scale']
-          if 'asymptotic' in nuisancesScalingValues.keys() :
-            whatKindOfScaleAsymptotic = nuisancesScalingValues['asymptotic']
+          
+          skip_this_one = False
+          if 'veto' in nuisancesScalingValues.keys() :
+            for list_of_nuisances_not_to_consider in nuisancesScalingValues['veto'] :
+              if re.search(list_of_nuisances_not_to_consider, systematicsName[it]) :
+                skip_this_one = True
+              
+          if not skip_this_one :    
+            whatKindOfScale = nuisancesScalingValues['scale']
+            if 'asymptotic' in nuisancesScalingValues.keys() :
+              whatKindOfScaleAsymptotic = nuisancesScalingValues['asymptotic']
         
 
       # scale all nuisances if needed

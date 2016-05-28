@@ -13,7 +13,7 @@ cp -r ggHEFCAInput/ ggHEFCA-ext-x0030/
 cp -r ggHEFCAInput/ ggHEFCA-ext-x0050/
 cp -r ggHEFCAInput/ ggHEFCA-ext-x0100/
 cp -r ggHEFCAInput/ ggHEFCA-ext-x0200/
-cp -r ggHEFCAInput/ ggHEFCA-ext-x0300/
+cp -r ggHEFCAInput/ ggHEFCA-ext-x0500/
 
 
 # scaling the systematics with luminosity
@@ -139,14 +139,14 @@ python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_dytt_of0j/events/  -o    
 python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_dytt_of1j/events/  -o     ggHEFCA-ext-x0200/hww2l2v_13TeV_dytt_of1j/events/    -s  200.0    -n  nuisancesToScale.py       
 
 
-python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_em_1j/mllVSmth/    -o     ggHEFCA-ext-x0300/hww2l2v_13TeV_em_1j/mllVSmth/      -s  300.0    -n  nuisancesToScale.py   
-python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_me_1j/mllVSmth/    -o     ggHEFCA-ext-x0300/hww2l2v_13TeV_me_1j/mllVSmth/      -s  300.0    -n  nuisancesToScale.py       
-python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_em_0j/mllVSmth/    -o     ggHEFCA-ext-x0300/hww2l2v_13TeV_em_0j/mllVSmth/      -s  300.0    -n  nuisancesToScale.py       
-python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_me_0j/mllVSmth/    -o     ggHEFCA-ext-x0300/hww2l2v_13TeV_me_0j/mllVSmth/      -s  300.0    -n  nuisancesToScale.py       
-python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_top_of0j/events/   -o     ggHEFCA-ext-x0300/hww2l2v_13TeV_top_of0j/events/     -s  300.0    -n  nuisancesToScale.py       
-python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_top_of1j/events/   -o     ggHEFCA-ext-x0300/hww2l2v_13TeV_top_of1j/events/     -s  300.0    -n  nuisancesToScale.py       
-python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_dytt_of0j/events/  -o     ggHEFCA-ext-x0300/hww2l2v_13TeV_dytt_of0j/events/    -s  300.0    -n  nuisancesToScale.py       
-python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_dytt_of1j/events/  -o     ggHEFCA-ext-x0300/hww2l2v_13TeV_dytt_of1j/events/    -s  300.0    -n  nuisancesToScale.py       
+python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_em_1j/mllVSmth/    -o     ggHEFCA-ext-x0500/hww2l2v_13TeV_em_1j/mllVSmth/      -s  500.0    -n  nuisancesToScale.py   
+python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_me_1j/mllVSmth/    -o     ggHEFCA-ext-x0500/hww2l2v_13TeV_me_1j/mllVSmth/      -s  500.0    -n  nuisancesToScale.py       
+python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_em_0j/mllVSmth/    -o     ggHEFCA-ext-x0500/hww2l2v_13TeV_em_0j/mllVSmth/      -s  500.0    -n  nuisancesToScale.py       
+python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_me_0j/mllVSmth/    -o     ggHEFCA-ext-x0500/hww2l2v_13TeV_me_0j/mllVSmth/      -s  500.0    -n  nuisancesToScale.py       
+python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_top_of0j/events/   -o     ggHEFCA-ext-x0500/hww2l2v_13TeV_top_of0j/events/     -s  500.0    -n  nuisancesToScale.py       
+python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_top_of1j/events/   -o     ggHEFCA-ext-x0500/hww2l2v_13TeV_top_of1j/events/     -s  500.0    -n  nuisancesToScale.py       
+python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_dytt_of0j/events/  -o     ggHEFCA-ext-x0500/hww2l2v_13TeV_dytt_of0j/events/    -s  500.0    -n  nuisancesToScale.py       
+python ModifyDatacard.py -f ggHEFCAInput/hww2l2v_13TeV_dytt_of1j/events/  -o     ggHEFCA-ext-x0500/hww2l2v_13TeV_dytt_of1j/events/    -s  500.0    -n  nuisancesToScale.py       
 
 
 
@@ -302,15 +302,15 @@ combineCards.py   em1j13=ggHEFCA-ext-x0200/hww2l2v_13TeV_em_1j/mllVSmth/datacard
                   >   Moriond2016.v1.txt.pruned.x0200.txt
 
                   
-combineCards.py   em1j13=ggHEFCA-ext-x0300/hww2l2v_13TeV_em_1j/mllVSmth/datacard.txt.pruned.txt \
-                  me1j13=ggHEFCA-ext-x0300/hww2l2v_13TeV_me_1j/mllVSmth/datacard.txt.pruned.txt \
-                  em0j13=ggHEFCA-ext-x0300/hww2l2v_13TeV_em_0j/mllVSmth/datacard.txt.pruned.txt \
-                  me0j13=ggHEFCA-ext-x0300/hww2l2v_13TeV_me_0j/mllVSmth/datacard.txt.pruned.txt \
-                  of0j13Top=ggHEFCA-ext-x0300/hww2l2v_13TeV_top_of0j/events/datacard.txt.pruned.txt \
-                  of1j13Top=ggHEFCA-ext-x0300/hww2l2v_13TeV_top_of1j/events/datacard.txt.pruned.txt \
-                  of0j13DYtt=ggHEFCA-ext-x0300/hww2l2v_13TeV_dytt_of0j/events/datacard.txt.pruned.txt \
-                  of1j13DYtt=ggHEFCA-ext-x0300/hww2l2v_13TeV_dytt_of1j/events/datacard.txt.pruned.txt \
-                  >   Moriond2016.v1.txt.pruned.x0300.txt
+combineCards.py   em1j13=ggHEFCA-ext-x0500/hww2l2v_13TeV_em_1j/mllVSmth/datacard.txt.pruned.txt \
+                  me1j13=ggHEFCA-ext-x0500/hww2l2v_13TeV_me_1j/mllVSmth/datacard.txt.pruned.txt \
+                  em0j13=ggHEFCA-ext-x0500/hww2l2v_13TeV_em_0j/mllVSmth/datacard.txt.pruned.txt \
+                  me0j13=ggHEFCA-ext-x0500/hww2l2v_13TeV_me_0j/mllVSmth/datacard.txt.pruned.txt \
+                  of0j13Top=ggHEFCA-ext-x0500/hww2l2v_13TeV_top_of0j/events/datacard.txt.pruned.txt \
+                  of1j13Top=ggHEFCA-ext-x0500/hww2l2v_13TeV_top_of1j/events/datacard.txt.pruned.txt \
+                  of0j13DYtt=ggHEFCA-ext-x0500/hww2l2v_13TeV_dytt_of0j/events/datacard.txt.pruned.txt \
+                  of1j13DYtt=ggHEFCA-ext-x0500/hww2l2v_13TeV_dytt_of1j/events/datacard.txt.pruned.txt \
+                  >   Moriond2016.v1.txt.pruned.x0500.txt
                   
                   
 combine -M MaxLikelihoodFit     -t -1 --expectSignal 1      --rMin=-2 --rMax=4  Moriond2016.v1.txt.pruned.x0001.txt             >   result.data.MaxLikelihoodFit.Moriond2016.v1.txt.pruned.x0001.txt    
@@ -346,8 +346,8 @@ combine -M ProfileLikelihood    -t -1 --expectSignal 1      --significance Morio
 combine -M MaxLikelihoodFit     -t -1 --expectSignal 1      --rMin=-2 --rMax=4  Moriond2016.v1.txt.pruned.x0200.txt     --robustFit 1  >   result.data.MaxLikelihoodFit.Moriond2016.v1.txt.pruned.x0200.txt    
 combine -M ProfileLikelihood    -t -1 --expectSignal 1      --significance Moriond2016.v1.txt.pruned.x0200.txt   >   result.data.Significance.Moriond2016.v1.txt.pruned.x0200.txt
 
-combine -M MaxLikelihoodFit     -t -1 --expectSignal 1      --rMin=-2 --rMax=4  Moriond2016.v1.txt.pruned.x0300.txt     --robustFit 1  >   result.data.MaxLikelihoodFit.Moriond2016.v1.txt.pruned.x0300.txt    
-combine -M ProfileLikelihood    -t -1 --expectSignal 1      --significance Moriond2016.v1.txt.pruned.x0300.txt   >   result.data.Significance.Moriond2016.v1.txt.pruned.x0300.txt
+combine -M MaxLikelihoodFit     -t -1 --expectSignal 1      --rMin=-2 --rMax=4  Moriond2016.v1.txt.pruned.x0500.txt     --robustFit 1  >   result.data.MaxLikelihoodFit.Moriond2016.v1.txt.pruned.x0500.txt    
+combine -M ProfileLikelihood    -t -1 --expectSignal 1      --significance Moriond2016.v1.txt.pruned.x0500.txt   >   result.data.Significance.Moriond2016.v1.txt.pruned.x0500.txt
 
 
 # combine -M MultiDimFit Moriond2016.v1.txt.pruned.x0001.txt -m 125 --algo=grid --points 200 --setPhysicsModelParameterRanges r=-2,4 -n "LHScanHdata.x0001"     >   result.data.LikelihoodScan.Moriond2016.v1.txt.pruned.x0001.txt
