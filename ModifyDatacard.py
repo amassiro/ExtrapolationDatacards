@@ -28,7 +28,7 @@ import math
 
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
-def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
+def ScaleDatacard (datacardname,xsecScale,scale,nuisancesScaling) :
 
     # open the datacard file
 
@@ -175,7 +175,7 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
             globalScale = scale*additionalScale
             #if (sample == "Vg") :
               #print "iFile = ", rootFileBin, "  :: histoName = ",histoName, " --> ", "histo_",str(sample) , " --> ",match2, " or ", match , " globalScale = ", globalScale
-            histogram.Sumw2()
+            #histogram.Sumw2() # --> why is this needed?
             histogram.Scale(globalScale)
             #print "globalScale = ",globalScale
 
@@ -237,74 +237,91 @@ def ScaleDatacard (datacardname,xsecScale,scale,scaleNuis) :
       sampleSyst = systematics[it].split (' ')
       sampleSyst = filter(lambda a: a != '', sampleSyst)
 
-      # reduce/increase statistical systematics
-      matchSysName = re.search("stat_bin1", systematicsName[it])
+      whatKindOfScale = None
+      whatKindOfScaleAsymptotic = 0.0
+      for nuisancesScalingName, nuisancesScalingValues in nuisancesScaling.iteritems():
+        # check matching in name of nuisance
+        matchSysName = re.search(nuisancesScalingName, systematicsName[it])
+        if matchSysName != None :
+          whatKindOfScale = nuisancesScalingValues['scale']
+          if 'asymptotic' in nuisancesScalingValues.keys() :
+            whatKindOfScaleAsymptotic = nuisancesScalingValues['asymptotic']
+        
 
-      # correct gmN nuisances
-      if (sampleSyst[1] == "gmN") :
-        globalScale = 1.
-        for itColumn in range (len (sampleSyst)) :
-          if itColumn>2 :   # blabla gmN N - -  0.3 - - 
-            if sampleSyst[itColumn] != "-" :
-              additionalScale = 1.
-              if sampleName[itColumn-3] in scaleFactor :
-                additionalScale = scaleFactor[ sampleName[itColumn-3] ]
-              globalScale = additionalScale*float(scale)
-              #print "globalScale = ", globalScale, " = ", additionalScale, " * ", float(scale), " sampleName[", itColumn-3 ,  "] ] = ", sampleName[itColumn-3], " sampleSyst[", itColumn, "] = ", sampleSyst[itColumn]
-
-        oldNsideband = 1.
-        newNsideband = 1.
-        for itColumn in range (len (sampleSyst)) :
-          if itColumn==2 : # te third column is the number of events in control region -> to be scaled!
-            f.write (str(int(globalScale*int(sampleSyst[itColumn]))))
-            f.write ("   ")
-            oldNsideband = int(sampleSyst[itColumn])
-            newNsideband = int(globalScale*int(sampleSyst[itColumn]))
-          else :
-            if sampleSyst[itColumn] == "-" or itColumn<=1:
-              f.write (sampleSyst[itColumn])
-              f.write ("   ")
-            else :
-              print "final globalScale = ", globalScale
-              f.write (str( float(sampleSyst[itColumn]) *  oldNsideband * globalScale / newNsideband ))
-              f.write ("   ")
-
-        f.write (' \n')
-
-      else :
-        # now all other nuisances
-        # scale all nuisances?
-        matchfile = False
-        if scaleNuis and sampleSyst[1] == "lnN" :
-          matchfile = True
-        if not matchfile :
+      # scale all nuisances if needed
+      if whatKindOfScale != None :
+        # lnN scaling
+        if sampleSyst[1] == "lnN" :
           f.write (systematics[it] + '\n')
-        else :
+          #globalScale = 1.
+          #for sample in sampleName:
+            #matchSample  = re.search("_"+str(sample)+"_", systematicsName[it])
+            #if matchSample:
+              #additionalScale = 1.
+            #if sample in scaleFactor :
+              #additionalScale = scaleFactor[ sample ]
+              #globalScale = scale*additionalScale
+          #for itColumn in range (len (sampleSyst)) :
+              #if itColumn!=0 and itColumn!=1 : # first two are name and lnN
+                #if sampleSyst[itColumn] == "-" :
+                  #f.write (sampleSyst[itColumn])
+                  #f.write ("   ")
+                #else :
+                  #kvalue = float (sampleSyst[itColumn])
+                  #kvalue -= 1.
+                  #kvalue = kvalue / math.sqrt (globalScale)     # error scales as 1/sqrt(scale)
+                  #f.write (str(kvalue+1.))
+                  #f.write ("   ")
+              #else :
+                #f.write (sampleSyst[itColumn])
+                #f.write ("   ")
+          #f.write (' \n')
+  
+        elif sampleSyst[1] == "shape" :
           globalScale = 1.
-          for sample in sampleName:
-            matchSample  = re.search("_"+str(sample)+"_", systematicsName[it])
-            if matchSample:
-              additionalScale = 1.
-            if sample in scaleFactor :
-              additionalScale = scaleFactor[ sample ]
-              globalScale = scale*additionalScale
+          if whatKindOfScale == 'asLumi' :
+            globalScale = 1. / scale
+
+            if whatKindOfScaleAsymptotic != 0 :
+               if scale > 1./whatKindOfScaleAsymptotic :
+                 globalScale = whatKindOfScaleAsymptotic
+              
+          if whatKindOfScale == 'asSqrtLumi' :
+
+            globalScale = 1. / math.sqrt(scale)
+
+            if whatKindOfScaleAsymptotic != 0 :
+               if math.sqrt(scale) > 1./whatKindOfScaleAsymptotic :
+                 globalScale = whatKindOfScaleAsymptotic
+    
+         
+          #print "globalScale = ", globalScale
+           
           for itColumn in range (len (sampleSyst)) :
-              if itColumn!=0 and itColumn!=1 : # first two are name and lnN
+              if itColumn!=0 and itColumn!=1 : # first two are name and shape
                 if sampleSyst[itColumn] == "-" :
                   f.write (sampleSyst[itColumn])
                   f.write ("   ")
                 else :
                   kvalue = float (sampleSyst[itColumn])
-                  kvalue -= 1.
-                  kvalue = kvalue / math.sqrt (globalScale)     # error scales as 1/sqrt(scale)
-                  f.write (str(kvalue+1.))
+                  kvalue /= globalScale
+                  f.write (str(kvalue))
                   f.write ("   ")
               else :
                 f.write (sampleSyst[itColumn])
                 f.write ("   ")
           f.write (' \n')
+          
+        
+        else :
+          f.write (systematics[it] + '\n')
+
+      else :
+        f.write (systematics[it] + '\n')
 
     f.close ()
+
+    print 'new file: ', filename
 
 
 
@@ -332,10 +349,17 @@ if __name__ == '__main__':
     parser.add_option("-o", "--outputFolder", dest="folderNameOutput",   help="folder name output", metavar="NEWDATACARDS")
     parser.add_option("-i", "--input",        dest="xsecScale",          help="cross section scaling file (e.g. from 8 to 13 TeV)",     default='blabla.py')
     parser.add_option("-s", "--scale",        dest="scale",              help="scaling factor in luminosity", default="1.0")
-    parser.add_option("-a", "--scaleNuis",    dest="scaleNuis",          help="scale according to luminosity all normalization nuisances?", default=False)
+    parser.add_option("-n", "--scaleNuisFile",dest="scaleNuisFile",      help="scale according to luminosity or something else nuisances", default=None)
 
     (options, args) = parser.parse_args()
 
+
+    nuisancesScaling = {}
+    if options.scaleNuisFile != None and os.path.exists(options.scaleNuisFile) :
+      handle = open(options.scaleNuisFile,'r')
+      exec(handle)
+      handle.close()
+    
 
 
     # make a copy of the input folder
@@ -354,7 +378,7 @@ if __name__ == '__main__':
 
     # for each datacard perform the nuisances scan
     for datacard in listOfDatacards :
-        ScaleDatacard (datacard,options.xsecScale,float(options.scale),bool(options.scaleNuis))
+        ScaleDatacard (datacard,options.xsecScale,float(options.scale),nuisancesScaling)
 
 
 
