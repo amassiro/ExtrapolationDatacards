@@ -304,7 +304,7 @@ def ScaleDatacard (datacardname,xsecScale,scale,nuisancesScaling) :
                   f.write ("   ")
                 else :
                   kvalue = float (sampleSyst[itColumn])
-                  kvalue /= globalScale
+                  kvalue *= globalScale
                   f.write (str(kvalue))
                   f.write ("   ")
               else :
