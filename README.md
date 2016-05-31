@@ -33,6 +33,15 @@ ggH 13 TeV
 
     
 
+ggH differential 13 TeV 
+
+    
+    cp -r /afs/cern.ch/user/a/amassiro/Framework/CMSSW_7_6_3/src/PlotsConfigurations/Configurations/Differential/ggH/datacards/    ggHDifferentialInput/
+    
+    sh scripts/doGGHDifferential.sh
+
+       
+
 WHSC
 
     cp -r /afs/cern.ch/user/a/amassiro/scratch0/VBF/Limit/CMSSW_6_1_0/src/qqHWWlnln-WHSC-All-03Nov-Shape2012 ./
